@@ -17,44 +17,56 @@ public:
     this->map = map;
   };
 
+  std::string choosePlataform() {
+    int plataform = 2;
+    printf("Escolha uma plataforma digitando apenas o número. (2, 6, 8, 11, 12)\n");
+    std::cin >> plataform;
+    this->plat = std::string("p") + std::to_string(plataform);
+    return this->plat;
+  }
+  
   bool changePlat(std::string plataforma) {
     bool canChange = false;
-    if (this->plat == "") {
-      this->plat = plataforma;
-      canChange = true;
-    }else {
-      auto platsHere = map.at("central").at(this->pos).at("plat");
-      bool hasPlatAsked = false;
-      bool hasMine = false;
-      auto plats = map.at("central").at(this->pos).at("plat");
-      for (auto it = plats.begin(); it != plats.end(); ++it) {
-	if (*it == plataforma) {
-	  hasPlatAsked = true;
-	  continue;
-	}
-	if (*it == this->plat) {
-	  hasMine = true;
-	  continue;
-	}
+    if (this->plat == "") this->plat = plataforma;
+    if (this->plat == "" && plataforma == "") this->plat = this->choosePlataform();
+    auto platsHere = map.at("central").at(this->pos).at("plat");
+    bool hasPlatAsked = false;
+    bool hasMine = false;
+    auto plats = map.at("central").at(this->pos).at("plat");
+    for (auto it = plats.begin(); it != plats.end(); ++it) {
+      if (*it == plataforma) {
+	hasPlatAsked = true;
+	continue;
       }
-      canChange = (hasPlatAsked && hasMine);
-      if (canChange) this->plat = plataforma;
+      if (*it == this->plat) {
+	hasMine = true;
+	continue;
+      }
     }
+    canChange = (hasPlatAsked && hasMine);
+    if (canChange) this->plat = plataforma;
+    return canChange;
+    
     return canChange;
   }
 
   bool previous(std::string plataforma = "") {
     if (this->plat == "") this->plat = plataforma;
-    if (this->pos - 1 <= -1) return false;
+    if (this->plat == "" && plataforma == "") this->plat = this->choosePlataform();
+    if ((this->pos - 1) <= -1) return false;
     auto central = map.at("central");
     bool found = false;
+    int headpos = this->pos;
+    int headnext = this->nextpos;
     while (!found) {
-      this->pos -= 1;
-      this->nextpos -= 1;
-      auto plats = map.at("central").at(this->pos).at("plat");
+      headpos -= 1;
+      headnext -= 1;
+      auto plats = map.at("central").at(headpos).at("plat");
       for (auto it = plats.begin(); it != plats.end(); ++it) {
 	if(*it == this->plat) {
 	  found = true;
+	  this->pos = headpos;
+	  this->nextpos = headnext;
 	  return found;
 	} else {
 	  continue;
@@ -66,16 +78,20 @@ public:
   
   bool next(std::string plataforma = "") {
     if (this->plat == "") this->plat = plataforma;
+    if (this->plat == "" && plataforma == "") this->plat = this->choosePlataform();
     bool found = false;
+    int headpos = this->pos;
     while (!found) {
       auto central = map.at("central");
-      if (this->pos + 1 >= central.size()) return false;
-      this->pos += 1;
-      this->nextpos += 1;
-      auto plats = map.at("central").at(this->pos).at("plat");
+      if ((headpos + 1) >= central.size()) return false;
+      headpos += 1;
+      // this->nextpos += 1;
+      auto plats = map.at("central").at(headpos).at("plat");
+      auto nextplats = map.at("central").at(headpos).at("plat");
       for (auto it = plats.begin(); it != plats.end(); ++it) {
 	if(*it == this->plat) {
 	  found = true;
+	  this->pos = headpos;
 	  return found;
 	} else {
 	  continue;
@@ -91,8 +107,10 @@ int main() {
   json map = json::parse(mapfile);
   Trem trem(map);
   auto plats = map.at("central");
+  // std::cout << plats.size() << std::endl;
   
   while(true) {
+    printf("now in position %d", trem.pos);
     int command;
     std::string scommand;
     printf("\n1:Quit\n2:Próximo\n3:Anterior\n4:Mudar plataforma\n\n");
@@ -100,9 +118,8 @@ int main() {
     if (command == 1) { exit(0); }
     if (command == 2) {
       if (trem.plat == "") {
-	printf("Qual plataforma deseja seguir?\n");
-	std::cin >> scommand;
-	if (trem.next(scommand)) {
+	trem.choosePlataform();
+	if (trem.next(trem.plat)) {
 	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
 	} else {
 	  printf("Não é possível seguir em frente.\n");
@@ -117,9 +134,8 @@ int main() {
     }
     if (command == 3) {
       if (trem.plat == "") {
-	printf("Qual plataforma deseja seguir?\n");
-	std::cin >> scommand;
-	if (trem.previous(scommand)) {
+	trem.choosePlataform();
+	if (trem.previous(trem.plat)) {
 	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
 	} else {
 	  printf("Não é possível voltar.\n");
@@ -133,9 +149,12 @@ int main() {
       }
     }
     if (command == 4) {
-      printf("Qual plataforma deseja seguir?\n");
-      std::cin >> scommand;
-      if (trem.changePlat(scommand)) {
+      int plataform = 0;
+      std::string plataforms = "";
+      printf("Escolha uma plataforma digitando apenas o número. (2, 6, 8, 11, 12)\n");
+      std::cin >> plataform;
+      plataforms = std::string("p") + std::to_string(plataform);
+      if (trem.changePlat(plataforms)) {
 	printf("Agora seguindo plataforma %s\n", std::string(trem.plat).c_str());
       } else {
 	printf("Não é possível trocar de plataforma. Ainda em %s\n", std::string(trem.plat).c_str());
