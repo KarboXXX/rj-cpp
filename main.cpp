@@ -45,18 +45,15 @@ public:
 
   bool previous(std::string plataforma = "") {
     if (this->plat == "") this->plat = plataforma;
-    auto central = map.at("central");
     if (this->pos - 1 <= -1) return false;
-    bool shouldstop = false;
+    auto central = map.at("central");
     bool found = false;
-    if ((this->pos - 1)<(-1)) return false;
-    while (!shouldstop) {
+    while (!found) {
       this->pos -= 1;
       this->nextpos -= 1;
       auto plats = map.at("central").at(this->pos).at("plat");
       for (auto it = plats.begin(); it != plats.end(); ++it) {
 	if(*it == this->plat) {
-	  shouldstop = true;
 	  found = true;
 	  return found;
 	} else {
@@ -69,31 +66,23 @@ public:
   
   bool next(std::string plataforma = "") {
     if (this->plat == "") this->plat = plataforma;
-    bool shouldstop = false;
     bool found = false;
-    while (!shouldstop) {
+    while (!found) {
       auto central = map.at("central");
       if (this->pos + 1 >= central.size()) return false;
       this->pos += 1;
       this->nextpos += 1;
       auto plats = map.at("central").at(this->pos).at("plat");
       for (auto it = plats.begin(); it != plats.end(); ++it) {
-	// std::cout << *it << std::endl;
 	if(*it == this->plat) {
-	  shouldstop = true;
 	  found = true;
-	  // std::cout << it.value() << std::endl;
-	  // std::cout << this->map.at("central").at(this->pos).at("name") << std::endl;
 	  return found;
 	} else {
 	  continue;
 	}
       }
     }
-    return found;
-    // std::cout << map.at("central").at(this->pos).dump(4) << std::endl;
-    // std::cout << map.at("central").at(this->pos).at("plat").dump(4) << std::endl;
-    
+    return found;  
   }
 };
 
@@ -102,11 +91,7 @@ int main() {
   json map = json::parse(mapfile);
   Trem trem(map);
   auto plats = map.at("central");
-
-  // if (trem.next("p2")) printf("agora: %s \n", std::string(plats.at(trem.pos).at("name")).c_str());
-  // if (trem.next("p2")) printf("agora: %s \n", std::string(plats.at(trem.pos).at("name")).c_str());
-  // if (trem.previous("p2")) printf("agora: %s \n", std::string(plats.at(trem.pos).at("name")).c_str());
-
+  
   while(true) {
     int command;
     std::string scommand;
@@ -148,6 +133,7 @@ int main() {
       }
     }
     if (command == 4) {
+      printf("Qual plataforma deseja seguir?\n");
       std::cin >> scommand;
       if (trem.changePlat(scommand)) {
 	printf("Agora seguindo plataforma %s\n", std::string(trem.plat).c_str());
