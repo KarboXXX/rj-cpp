@@ -1,0 +1,504 @@
+{
+  "central": [
+    {
+      "name": "Praça da Bandeira",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "São Cristóvão",
+      "plat": [
+        "p2",
+        "p6",
+        "p8",
+        "p11",
+        "p12"
+      ]
+    },
+    {
+      "name": "Maracanã",
+      "plat": [
+        "p2",
+        "p6",
+        "p8",
+        "p11",
+        "p12"
+      ]
+    },
+    {
+      "name": "Mangueira/Jamelão",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "São Francisco Xavier",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Riachuelo",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Sampaio",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Engenho Novo",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Silva Freire",
+      "plat": [
+        "p6",
+        "p8"
+      ]
+    },
+    {
+      "name": "Méier",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Engenho de Dentro",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Piedade",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Quintino",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Cascadura",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Madureira",
+      "plat": [
+        "p2",
+        "p6",
+        "p8"
+      ]
+    },
+    {
+      "name": "Oswaldo Cruz",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Prefeito Bendo Ribeiro",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Marechal Hermes",
+      "plat": [
+        "p2"
+      ]
+    },
+    {
+      "name": "Deodoro",
+      "plat": [
+        "p2",
+        "p6",
+        "p8"
+      ]
+    },
+    {
+      "name": "Vila Militar",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Magalhães Bastos",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Realengo",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Mocidade/Padre Miguel",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Guilherme da Silvera",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Bangu",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Senador Camará",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Santíssimo",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Augusto Vasconcelos",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Campo Grande",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Bejamin do Monte",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Inhoaíba",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Cosmos",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Paciência",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Tancredo Neves",
+      "plat": [
+        "p6"
+      ]
+    },
+    {
+      "name": "Ricardo de Albuquerque",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Anchieta",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Olinda",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Nilópolis",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Edson Passos",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Mesquita",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Presidente Juscelino",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Nova Iguaçu",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Comendador Soares",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Austin",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Queimados",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Engenheiro Pedreira",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Japeri",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Lages",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Paracambi",
+      "plat": [
+        "p8"
+      ]
+    },
+    {
+      "name": "Triagem",
+      "plat": [
+        "p11",
+        "p12"
+      ]
+    },
+    {
+      "name": "Jacarezinho",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Del Castilho",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Pilares",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Tomás Coelho",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Cavalcanti",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Mercadão de Madureira",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Rocha Miranda",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Hondório Guergi",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Barros Filho",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Costa Barros",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Pavuna/São João de Meriti",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Vila Rosali",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Agostinho do Porto",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Coelho da Rocha",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Belford Roxo",
+      "plat": [
+        "p11"
+      ]
+    },
+    {
+      "name": "Manguinhos",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Bonsucesso",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Ramos",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Olaria",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Penha",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Penha Circular",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Brás de Pina",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Cordovil",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Parada de Lucas",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Vigário Geral",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Duque de Caxias",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Corte Oito",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Gramacho",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Campos Eliseos",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Jardim Primavera",
+      "plat": [
+        "p12"
+      ]
+    },
+    {
+      "name": "Saracuruna",
+      "plat": [
+        "p12"
+      ]
+    }
+  ]
+}
