@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <bits/stdc++.h>
 #include "json.hpp"
 
 using json = nlohmann::json;
@@ -21,8 +20,15 @@ public:
     int plataform = 2;
     printf("Escolha uma plataforma digitando apenas o número. (2, 6, 8, 11, 12)\n");
     std::cin >> plataform;
-    this->plat = std::string("p") + std::to_string(plataform);
-    return this->plat;
+    while (true) {
+      if (plataform == 2 || plataform == 6 || plataform == 8 || plataform == 11 || plataform == 12) {
+	this->plat = std::string("p") + std::to_string(plataform);
+	return this->plat;
+      } else {
+	printf("plataforma inválida.\n");
+	continue;
+      }
+    }
   }
   
   bool changePlat(std::string plataforma) {
@@ -107,13 +113,14 @@ int main() {
   json map = json::parse(mapfile);
   Trem trem(map);
   auto plats = map.at("central");
+  bool showIdPos = true;
   // std::cout << plats.size() << std::endl;
   
   while(true) {
-    printf("now in position %d", trem.pos);
+    if (showIdPos) printf("posição atual: %d", trem.pos);
     int command;
     std::string scommand;
-    printf("\n1:Quit\n2:Próximo\n3:Anterior\n4:Mudar plataforma\n\n");
+    printf("\n1:Quit\n2:Próximo\n3:Anterior\n4:Mudar plataforma\n5:On/Off Mostrar posição atual.\n\n");
     std::cin >> command;
     if (command == 1) { exit(0); }
     if (command == 2) {
@@ -153,12 +160,25 @@ int main() {
       std::string plataforms = "";
       printf("Escolha uma plataforma digitando apenas o número. (2, 6, 8, 11, 12)\n");
       std::cin >> plataform;
+      bool valid = false;
+      while (!valid) {
+	if (plataform == 2 || plataform == 6 || plataform == 8 || plataform == 11 || plataform == 12) {
+	  valid = true;
+	} else {
+	  printf("plataforma inválida.\n");
+	}
+      }
       plataforms = std::string("p") + std::to_string(plataform);
       if (trem.changePlat(plataforms)) {
 	printf("Agora seguindo plataforma %s\n", std::string(trem.plat).c_str());
       } else {
 	printf("Não é possível trocar de plataforma. Ainda em %s\n", std::string(trem.plat).c_str());
       }
+    }
+    if (command == 5) {
+      showIdPos = (!showIdPos);
+      if (showIdPos) printf("Mostrando posição.\n");
+      if (!showIdPos) printf("Escondendo posição.\n");
     }
   }
   
