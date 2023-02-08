@@ -1,4 +1,7 @@
 #include <iostream>
+#include <unistd.h>
+#include <cstdlib>
+#include <ostream>
 #include <string>
 #include <fstream>
 #include "./json/single_include/nlohmann/json.hpp"
@@ -108,8 +111,31 @@ public:
   }
 };
 
+int cls(std::string os) {
+  if (os == "windows") {
+    return system("cls");
+  }
+  if (os == "linux") {
+    return system("clear");
+  }
+  return -1;
+}
+
 int main() {
+  std::string os = "";
+#ifdef _WIN32
+  os = "windows";
+#elif __linux__
+  os = "linux";
+#else
+  std::cout << "Não é possível determinar sistema operacional" << std::endl;
+#endif
+
   std::ifstream mapfile("map.json");
+  if (!mapfile) {
+    printf("Não foi possível abrir o arquivo map.json, ou ele não foi encontrado.\n");
+    return -1;
+  }
   json map = json::parse(mapfile);
   Trem trem(map);
   auto plats = map.at("central");
@@ -127,14 +153,18 @@ int main() {
       if (trem.plat == "") {
 	trem.choosePlataform();
 	if (trem.next(trem.plat)) {
+	  cls(os);
 	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
 	} else {
+	  cls(os);
 	  printf("Não é possível seguir em frente.\n");
 	}
       } else {
 	if (trem.next()) {
+	  cls(os);
 	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
 	} else {
+	  cls(os);
 	  printf("Não é possível seguir em frente.\n");
 	}
       }
@@ -149,8 +179,10 @@ int main() {
 	}
       } else {
 	if (trem.previous()) {
+	  cls(os);
 	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
 	} else {
+	  cls(os);
 	  printf("Não é possível voltar.\n");
 	}
       }
@@ -165,18 +197,22 @@ int main() {
 	if (plataform == 2 || plataform == 6 || plataform == 8 || plataform == 11 || plataform == 12) {
 	  valid = true;
 	} else {
+	  cls(os);
 	  printf("plataforma inválida.\n");
 	}
       }
       plataforms = std::string("p") + std::to_string(plataform);
       if (trem.changePlat(plataforms)) {
+	cls(os);
 	printf("Agora seguindo plataforma %s\n", std::string(trem.plat).c_str());
       } else {
+	cls(os);
 	printf("Não é possível trocar de plataforma. Ainda em %s\n", std::string(trem.plat).c_str());
       }
     }
     if (command == 5) {
       showIdPos = (!showIdPos);
+      cls(os);
       if (showIdPos) printf("Mostrando posição.\n");
       if (!showIdPos) printf("Escondendo posição.\n");
     }
