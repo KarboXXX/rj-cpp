@@ -25,11 +25,11 @@ public:
     std::cin >> plataform;
     while (true) {
       if (plataform == 2 || plataform == 6 || plataform == 8 || plataform == 11 || plataform == 12) {
-	this->plat = std::string("p") + std::to_string(plataform);
-	return this->plat;
+        this->plat = std::string("p") + std::to_string(plataform);
+        return this->plat;
       } else {
-	printf("plataforma inválida.\n");
-	continue;
+        printf("plataforma inválida.\n");
+        continue;
       }
     }
   }
@@ -44,12 +44,12 @@ public:
     auto plats = map.at("central").at(this->pos).at("plat");
     for (auto it = plats.begin(); it != plats.end(); ++it) {
       if (*it == plataforma) {
-	hasPlatAsked = true;
-	continue;
+        hasPlatAsked = true;
+        continue;
       }
       if (*it == this->plat) {
-	hasMine = true;
-	continue;
+        hasMine = true;
+        continue;
       }
     }
     canChange = (hasPlatAsked && hasMine);
@@ -72,14 +72,14 @@ public:
       headnext -= 1;
       auto plats = map.at("central").at(headpos).at("plat");
       for (auto it = plats.begin(); it != plats.end(); ++it) {
-	if(*it == this->plat) {
-	  found = true;
-	  this->pos = headpos;
-	  this->nextpos = headnext;
-	  return found;
-	} else {
-	  continue;
-	}
+        if(*it == this->plat) {
+          found = true;
+          this->pos = headpos;
+          this->nextpos = headnext;
+          return found;
+        } else {
+          continue;
+        }
       }
     }
     return found;
@@ -98,13 +98,13 @@ public:
       auto plats = map.at("central").at(headpos).at("plat");
       auto nextplats = map.at("central").at(headpos).at("plat");
       for (auto it = plats.begin(); it != plats.end(); ++it) {
-	if(*it == this->plat) {
-	  found = true;
-	  this->pos = headpos;
-	  return found;
-	} else {
-	  continue;
-	}
+        if(*it == this->plat) {
+          found = true;
+          this->pos = headpos;
+          return found;
+        } else {
+          continue;
+        }
       }
     }
     return found;  
@@ -151,40 +151,40 @@ int main() {
     if (command == 1) { exit(0); }
     if (command == 2) {
       if (trem.plat == "") {
-	trem.choosePlataform();
-	if (trem.next(trem.plat)) {
-	  cls(os);
-	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
-	} else {
-	  cls(os);
-	  printf("Não é possível seguir em frente.\n");
-	}
+        trem.choosePlataform();
+        if (trem.next(trem.plat)) {
+          cls(os);
+          printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
+        } else {
+          cls(os);
+          printf("Não é possível seguir em frente.\n");
+        }
       } else {
-	if (trem.next()) {
-	  cls(os);
-	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
-	} else {
-	  cls(os);
-	  printf("Não é possível seguir em frente.\n");
-	}
+        if (trem.next()) {
+          cls(os);
+          printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
+        } else {
+          cls(os);
+          printf("Não é possível seguir em frente.\n");
+        }
       }
     }
     if (command == 3) {
       if (trem.plat == "") {
-	trem.choosePlataform();
-	if (trem.previous(trem.plat)) {
-	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
-	} else {
-	  printf("Não é possível voltar.\n");
-	}
+        trem.choosePlataform();
+        if (trem.previous(trem.plat)) {
+          printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
+        } else {
+          printf("Não é possível voltar.\n");
+        }
       } else {
-	if (trem.previous()) {
-	  cls(os);
-	  printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
-	} else {
-	  cls(os);
-	  printf("Não é possível voltar.\n");
-	}
+        if (trem.previous()) {
+          cls(os);
+          printf("você está em: %s\n", std::string(plats.at(trem.pos).at("name")).c_str());
+        } else {
+          cls(os);
+          printf("Não é possível voltar.\n");
+        }
       }
     }
     if (command == 4) {
@@ -194,20 +194,20 @@ int main() {
       std::cin >> plataform;
       bool valid = false;
       while (!valid) {
-	if (plataform == 2 || plataform == 6 || plataform == 8 || plataform == 11 || plataform == 12) {
-	  valid = true;
-	} else {
-	  cls(os);
-	  printf("plataforma inválida.\n");
-	}
+        if (plataform == 2 || plataform == 6 || plataform == 8 || plataform == 11 || plataform == 12) {
+          valid = true;
+        } else {
+          cls(os);
+          printf("plataforma inválida.\n");
+        }
       }
       plataforms = std::string("p") + std::to_string(plataform);
       if (trem.changePlat(plataforms)) {
-	cls(os);
-	printf("Agora seguindo plataforma %s\n", std::string(trem.plat).c_str());
+        cls(os);
+        printf("Agora seguindo plataforma %s\n", std::string(trem.plat).c_str());
       } else {
-	cls(os);
-	printf("Não é possível trocar de plataforma. Ainda em %s\n", std::string(trem.plat).c_str());
+        cls(os);
+        printf("Não é possível trocar de plataforma. Ainda em %s\n", std::string(trem.plat).c_str());
       }
     }
     if (command == 5) {
